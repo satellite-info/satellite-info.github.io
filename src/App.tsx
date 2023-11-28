@@ -25,6 +25,7 @@ import {OrbitList} from "./list/orbits";
 import Earth from "./components/Earth";
 import Rhythm from "./components/Rhythm";
 import ListRocket from "./components/ListRocket";
+import Oa from "./components/Oa";
 
 
 
@@ -68,6 +69,7 @@ export const App = () => (
               <Route path="/earth" element={<Earth />} />
               <Route path="/rhythm" element={<Rhythm />} />
               <Route path="/listrocket" element={<ListRocket perPage={10}/>} />
+              <Route path="/oa" element={<Oa />} />
           </CustomRoutes>
 
       </Admin>
