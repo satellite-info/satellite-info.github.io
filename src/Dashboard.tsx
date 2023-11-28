@@ -7,7 +7,7 @@ import SimpleCharts from "./charts/Chart"
 import ReCharts from "./charts/ReCharts"
 import Barchart from "./charts/NivoBar";
 import { Common } from "./Common"
-import ListRocket from "./ListRocket";
+
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -46,8 +46,6 @@ export const Dashboard = () => {
             <Item>🛰️ Satellite Location Information 🌌 🗺️ 📈</Item>
         </Grid>
 
-
-
         {/*row 4*/}
         <Grid xs={12} md={12}>
             <Barchart />
@@ -55,13 +53,6 @@ export const Dashboard = () => {
         <Grid xs={12} md={12}>
             <ReCharts />
         </Grid>
-
-        {/*row 5*/}
-        <Grid xs={12} md={12}>
-            <ListRocket perPage={10} />
-        </Grid>
-
-
 
         {/*row 3*/}
         <Grid xs={12} md={2}>
