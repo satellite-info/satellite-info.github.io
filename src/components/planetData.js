@@ -9,9 +9,9 @@ for (let index = 0; index < totalPlanets; index++) {
     planetData.push({
         id: index,
         color: randomColor(),
-        xRadius: (index + 1.5) * 4,
-        zRadius: (index + 1.5) * 2,
-        size: random(0.5, 1)
+        xRadius: (index + 0.3) * 3,
+        zRadius: (index + 0.3) * 1.5,
+        size: random(0.1, 0.4)
     });
 }
 
