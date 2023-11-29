@@ -17,9 +17,12 @@ const Rhythm = () => {
         return () => clearInterval(intervalId);
     }, []); // 빈 배열을 전달하여 최초 렌더링 시에만 실행
 
+    const viewportWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 
     return (
-        <Stage>
+        <Container width={viewportWidth} height={viewportHeight}>
+        <Stage width={viewportWidth} height={viewportHeight} options={{ resizeTo: window }}>
             <Sprite
                 image="../../public/images/satellite.png"
                 width={50}
@@ -29,11 +32,8 @@ const Rhythm = () => {
                 anchor={{ x: 0.5, y: 0.5 }}
                 rotation={satelliteRotation}
             />
-
-            <Container x={400} y={330}>
-                <Text text="Hello World" anchor={{ x: 0.5, y: 0.5 }} filters={[blurFilter]} />
-            </Container>
         </Stage>
+        </Container>
     );
 };
 
