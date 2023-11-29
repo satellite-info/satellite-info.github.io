@@ -1,39 +1,23 @@
-import * as THREE from 'three'
-import { useRef, useState } from 'react'
-import { Canvas, useFrame, ThreeElements } from '@react-three/fiber'
-
-
-function Box(props: ThreeElements['mesh']) {
-    const meshRef = useRef<THREE.Mesh>(null!)
-    const [hovered, setHover] = useState(false)
-    const [active, setActive] = useState(false)
-    useFrame((state, delta) => (meshRef.current.rotation.x += delta))
-    return (
-        <mesh
-            {...props}
-            ref={meshRef}
-            scale={active ? 1.5 : 1}
-            onClick={(event) => setActive(!active)}
-            onPointerOver={(event) => setHover(true)}
-            onPointerOut={(event) => setHover(false)}>
-            <boxGeometry args={[1, 1, 1]} />
-            <meshStandardMaterial color={hovered ? 'hotpink' : 'orange'} />
-        </mesh>
-    )
-}
-
+import { BlurFilter } from 'pixi.js';
+import { Stage, Container, Sprite, Text } from '@pixi/react';
+import { useMemo } from 'react';
 
 const Rhythm = () => {
+    const blurFilter = useMemo(() => new BlurFilter(4), []);
+
     return (
-        // <div id="canvas-container">
-            <Canvas>
-                <pointLight position={[10, 10, 10]} />
-                <mesh>
-                    <sphereGeometry />
-                    <meshStandardMaterial color="hotpink" />
-                </mesh>
-            </Canvas>
-        // </div>
+        <Stage>
+            <Sprite
+                image="https://pixijs.io/pixi-react/img/bunny.png"
+                x={400}
+                y={270}
+                anchor={{ x: 0.5, y: 0.5 }}
+            />
+
+            <Container x={400} y={330}>
+                <Text text="Hello World" anchor={{ x: 0.5, y: 0.5 }} filters={[blurFilter]} />
+            </Container>
+        </Stage>
     );
 };
 
