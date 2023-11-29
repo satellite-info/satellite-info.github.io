@@ -4,18 +4,19 @@ import { useMemo, useState, useEffect } from 'react';
 
 const Rhythm = () => {
     const blurFilter = useMemo(() => new BlurFilter(4), []);
-    const [satellitePosition, setSatellitePosition] = useState({ x: 400, y: 270 });
+    const [satelliteRotation, setSatelliteRotation] = useState(0);
 
     useEffect(() => {
-        // 일정 간격으로 위치 업데이트
+        // 일정 간격으로 회전 각도 업데이트
         const intervalId = setInterval(() => {
-            // 새로운 위치 계산 (예시: x 좌표를 일정량씩 증가)
-            setSatellitePosition((prevPosition) => ({ ...prevPosition, x: prevPosition.x + 5 }));
+            // 회전 각도를 일정량씩 증가 (예시: 0.1 라디안)
+            setSatelliteRotation((prevRotation) => prevRotation + 0.1);
         }, 100);
 
         // 컴포넌트가 언마운트되면 interval 정리
         return () => clearInterval(intervalId);
     }, []); // 빈 배열을 전달하여 최초 렌더링 시에만 실행
+
 
     return (
         <Stage>
@@ -23,9 +24,10 @@ const Rhythm = () => {
                 image="../../public/images/satellite.png"
                 width={50}
                 height={50}
-                x={satellitePosition.x}
-                y={satellitePosition.y}
+                x={400}
+                y={270}
                 anchor={{ x: 0.5, y: 0.5 }}
+                rotation={satelliteRotation}
             />
 
             <Container x={400} y={330}>
