@@ -10,7 +10,7 @@ const Rhythm = () => {
         // 일정 간격으로 회전 각도 업데이트
         const intervalId = setInterval(() => {
             // 회전 각도를 일정량씩 증가 (예시: 0.1 라디안)
-            setSatelliteRotation((prevRotation) => prevRotation + 0.1);
+            setSatelliteRotation((prevRotation) => prevRotation + 0.01);
         }, 100);
 
         // 컴포넌트가 언마운트되면 interval 정리
@@ -21,19 +21,17 @@ const Rhythm = () => {
     const viewportHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 
     return (
-        <Container width={viewportWidth} height={viewportHeight}>
         <Stage width={viewportWidth} height={viewportHeight} options={{ resizeTo: window }}>
             <Sprite
                 image="../../public/images/satellite.png"
-                width={50}
-                height={50}
-                x={400}
-                y={270}
+                width={200}
+                height={200}
+                x={viewportWidth/2}
+                y={viewportHeight/2}
                 anchor={{ x: 0.5, y: 0.5 }}
                 rotation={satelliteRotation}
             />
         </Stage>
-        </Container>
     );
 };
 
