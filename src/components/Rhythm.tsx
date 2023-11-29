@@ -8,7 +8,9 @@ const Rhythm = () => {
     return (
         <Stage>
             <Sprite
-                image="https://pixijs.io/pixi-react/img/bunny.png"
+                image="../../public/images/satellite.png"
+                width={50}
+                height={50}
                 x={400}
                 y={270}
                 anchor={{ x: 0.5, y: 0.5 }}
