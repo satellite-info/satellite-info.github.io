@@ -2,7 +2,7 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import * as THREE from "three";
 
-const Oa = () => {
+const SolarSystem = () => {
 
     return (
         <Canvas camera={{ position: [0, 20, 25], fov: 45 }}>
@@ -61,4 +61,4 @@ function Ecliptic({ xRadius = 1, zRadius = 1 }) {
     );
 }
 
-export default Oa;
+export default SolarSystem;

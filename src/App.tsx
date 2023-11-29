@@ -25,7 +25,7 @@ import {OrbitList} from "./list/orbits";
 import Earth from "./components/Earth";
 import Rhythm from "./components/Rhythm";
 import ListRocket from "./components/ListRocket";
-import Oa from "./components/Oa";
+import SolarSystem from "./components/SolarSystem";
 
 
 
@@ -69,7 +69,7 @@ export const App = () => (
               <Route path="/earth" element={<Earth />} />
               <Route path="/rhythm" element={<Rhythm />} />
               <Route path="/listrocket" element={<ListRocket perPage={10}/>} />
-              <Route path="/oa" element={<Oa />} />
+              <Route path="/solar_system" element={<SolarSystem />} />
           </CustomRoutes>
 
       </Admin>

@@ -2,7 +2,7 @@ import { Menu } from 'react-admin';
 import PublicIcon from '@mui/icons-material/Public';
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
-import MotionPhotosAutoIcon from '@mui/icons-material/MotionPhotosAuto';
+import SolarPowerIcon from '@mui/icons-material/SolarPower';
 
 export const MyMenu = () => (
     <Menu>
@@ -11,6 +11,6 @@ export const MyMenu = () => (
         <Menu.Item to="/earth" primaryText="Earth" leftIcon={<PublicIcon />}/>
         <Menu.Item to="/rhythm" primaryText="Rhythm" leftIcon={<LibraryMusicIcon />}/>
         <Menu.Item to="/listrocket" primaryText="listRocket" leftIcon={<FormatListBulletedIcon />}/>
-        <Menu.Item to="/oa" primaryText="oa" leftIcon={<MotionPhotosAutoIcon />}/>
+        <Menu.Item to="/solar_system" primaryText="solar system" leftIcon={<SolarPowerIcon />}/>
     </Menu>
 );
