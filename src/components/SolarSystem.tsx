@@ -1,8 +1,9 @@
-import { Canvas } from '@react-three/fiber';
+import {Canvas, useFrame} from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import * as THREE from "three";
 import planetData from './planetData'
 import "../../public/solar_system.css"
+import React from "react";
 
 const SolarSystem = () => {
     return (
@@ -37,9 +38,20 @@ function Sun() {
     );
 }
 function Planet({ planet: { color, xRadius, zRadius, size } }) {
+    const planetRef = React.useRef();
+
+    useFrame(({clock }) => {
+        const t = clock.getElapsedTime();
+        const x = xRadius * Math.sin(t);
+        const z: number = zRadius * Math.cos(t);
+        planetRef.current.position.x = x;
+        planetRef.current.position.z = z;
+        }
+    );
+
     return (
         <>
-            <mesh position={[xRadius, 0, 0]}>
+            <mesh ref={planetRef}>
                 <sphereGeometry args={[size, 32, 32]} />
                 <meshStandardMaterial color={color} />
             </mesh>
