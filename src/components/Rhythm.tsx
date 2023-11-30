@@ -9,17 +9,18 @@ const Rhythm = () => {
 
     useEffect(() => {
         const intervalId = setInterval(() => {
-            setSatelliteRotation((prevRotation) => prevRotation + 0.1);
-        }, 100);
+            setSatelliteRotation((prevRotation) => prevRotation + 0.003);
+        }, 10);
 
         return () => clearInterval(intervalId);
     }, []);
 
-    const handleTouch = () => {
+
+    const handleStageTouchStart = () => {
         setSatelliteScale((prevScale) => prevScale * 2);
     };
 
-    const handleRelease = () => {
+    const handleStageTouchEnd = () => {
         setSatelliteScale(1); // 손가락을 뗄 때 기존 크기로 되돌리기
     };
 
@@ -27,8 +28,14 @@ const Rhythm = () => {
     const viewportHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 
     return (
-        <Stage width={viewportWidth} height={viewportHeight} options={{ resizeTo: window }}>
-            <Container interactive={true} pointerdown={handleTouch} pointerup={handleRelease}>
+        <Stage
+            width={viewportWidth}
+            height={viewportHeight}
+            options={{ resizeTo: window }}
+            onPointerDown={handleStageTouchStart}
+            onPointerUp={handleStageTouchEnd}
+        >
+            <Container>
                 <Sprite
                     image="images/satellite.png"
                     width={50 * satelliteScale}
@@ -37,6 +44,7 @@ const Rhythm = () => {
                     y={viewportHeight / 2}
                     anchor={{ x: 0.5, y: 0.5 }}
                     rotation={satelliteRotation}
+                    interactive={true}
                 />
             </Container>
         </Stage>
