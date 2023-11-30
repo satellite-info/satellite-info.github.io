@@ -37,11 +37,11 @@ function Sun() {
         </mesh>
     );
 }
-function Planet({ planet: { color, xRadius, zRadius, size } }) {
+function Planet({ planet: { color, xRadius, zRadius, size, speed, offset } }) {
     const planetRef = React.useRef();
 
     useFrame(({clock }) => {
-        const t = clock.getElapsedTime();
+        const t = clock.getElapsedTime() * speed + offset;
         const x = xRadius * Math.sin(t);
         const z: number = zRadius * Math.cos(t);
         planetRef.current.position.x = x;

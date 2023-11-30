@@ -11,7 +11,9 @@ for (let index = 0; index < totalPlanets; index++) {
         color: randomColor(),
         xRadius: (index + 0.3) * 3,
         zRadius: (index + 0.3) * 1.5,
-        size: random(0.1, 0.4)
+        size: random(0.1, 0.4),
+        speed: random(0.1, 0.6),
+        offset: random(0, Math.PI * 2)
     });
 }
 
