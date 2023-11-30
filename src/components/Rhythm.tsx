@@ -7,14 +7,25 @@ const Rhythm = () => {
     const blurFilter = useMemo(() => new BlurFilter(4), []);
     const [satelliteRotation, setSatelliteRotation] = useState(0);
     const [satelliteScale, setSatelliteScale] = useState(1);
-    sound.add('buk_2', 'sound/buk_2.wav');
+
 
     useEffect(() => {
         const intervalId = setInterval(() => {
             setSatelliteRotation((prevRotation) => prevRotation + 0.003);
         }, 10);
 
-        return () => clearInterval(intervalId);
+        // 이미 등록된 사운드인지 확인
+        if (!sound.exists('buk_2')) {
+            console.log("add sound")
+            sound.add('buk_2', 'sound/buk_2.wav');
+        }
+
+        return () => {
+            clearInterval(intervalId);
+
+            // 사운드가 필요 없을 때 제거
+            sound.remove('buk_2');
+        }
     }, []);
 
 
