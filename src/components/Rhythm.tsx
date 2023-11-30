@@ -1,11 +1,13 @@
 import { BlurFilter } from 'pixi.js';
 import { Stage, Container, Sprite } from '@pixi/react';
 import { useMemo, useState, useEffect } from 'react';
+import { sound } from '@pixi/sound';
 
 const Rhythm = () => {
     const blurFilter = useMemo(() => new BlurFilter(4), []);
     const [satelliteRotation, setSatelliteRotation] = useState(0);
     const [satelliteScale, setSatelliteScale] = useState(1);
+    sound.add('buk_2', 'sound/buk_2.wav');
 
     useEffect(() => {
         const intervalId = setInterval(() => {
@@ -18,6 +20,7 @@ const Rhythm = () => {
 
     const handleStageTouchStart = () => {
         console.log("handleStageTouchStart");
+        sound.play('buk_2');
         setSatelliteScale((prevScale) => prevScale * 2);
     };
 

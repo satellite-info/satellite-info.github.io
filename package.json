@@ -20,6 +20,7 @@
     "@nivo/circle-packing": "^0.83.1",
     "@nivo/geo": "^0.83.1",
     "@pixi/react": "^7.1.1",
+    "@pixi/sound": "^5.2.2",
     "@react-three/drei": "^9.88.17",
     "@react-three/fiber": "^8.15.11",
     "@types/three": "^0.158.3",
