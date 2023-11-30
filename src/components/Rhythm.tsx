@@ -1,10 +1,8 @@
-import { BlurFilter } from 'pixi.js';
 import { Stage, Container, Sprite } from '@pixi/react';
-import { useMemo, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { sound } from '@pixi/sound';
 
 const Rhythm = () => {
-    const blurFilter = useMemo(() => new BlurFilter(4), []);
     const [satelliteRotation, setSatelliteRotation] = useState(0);
     const [satelliteScale, setSatelliteScale] = useState(1);
 
@@ -15,24 +13,44 @@ const Rhythm = () => {
         }, 100);
 
         // 이미 등록된 사운드인지 확인
-        if (!sound.exists('buk_2')) {
-            console.log("add sound")
-            sound.add('buk_2', 'sound/buk_2.wav');
-        }
+        const soundList = ['buk_1', 'buk_2', 'buk_3'];
+
+        soundList.forEach(soundName => {
+            if (!sound.exists(soundName)) {
+                console.log(`add sound - ${soundName}`);
+                sound.add(soundName, `sound/${soundName}.wav`);
+            }
+        });
 
         return () => {
             clearInterval(intervalId);
 
             // 사운드가 필요 없을 때 제거
+            sound.remove('buk_1');
             sound.remove('buk_2');
+            sound.remove('buk_3');
         }
     }, []);
 
 
-    const handleStageTouchStart = () => {
-        console.log("handleStageTouchStart");
-        sound.play('buk_2');
-        setSatelliteScale((prevScale) => prevScale * 1.2);
+    const handleStageTouchStart = (event) => {
+        const clientX: number = event.clientX;
+        const innerWidth: number = window.innerWidth;
+        const touchPositionRatio: number = clientX / innerWidth;
+
+        console.log("handleStageTouchStart(event.clientX):" + event.clientX);
+        console.log("handleStageTouchStart(window.innerWidth):" + window.innerWidth);
+        console.log("handleStageTouchStart(touchPositionRatio):" + touchPositionRatio);
+
+        if (touchPositionRatio < 1/3) {
+            sound.play('buk_1')
+        } else if (touchPositionRatio > 2/3 ) {
+            sound.play('buk_3')
+        } else {
+            sound.play('buk_2');
+        }
+
+        setSatelliteScale((prevScale) => prevScale * (1.0 + touchPositionRatio/2));
     };
 
     const handleStageTouchEnd = () => {
