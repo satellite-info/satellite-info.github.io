@@ -17,6 +17,7 @@ const Rhythm = () => {
 
 
     const handleStageTouchStart = () => {
+        console.log("handleStageTouchStart");
         setSatelliteScale((prevScale) => prevScale * 2);
     };
 
@@ -44,7 +45,6 @@ const Rhythm = () => {
                     y={viewportHeight / 2}
                     anchor={{ x: 0.5, y: 0.5 }}
                     rotation={satelliteRotation}
-                    interactive={true}
                 />
             </Container>
         </Stage>

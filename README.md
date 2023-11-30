@@ -128,3 +128,7 @@ npm run build
 - https://www.space-track.org/
 - [Animated Solar System](https://medium.com/geekculture/build-3d-apps-with-react-animated-solar-system-part-1-c4c394a8574c)
 - https://replit.com/talk/learn/Introduction-to-Making-a-Rhythm-Game/21414?order=new
+
+- [영남농악가락 사물놀이 가락보](https://m.blog.naver.com/ssidsn/221486506701)
+- http://pilbong.co.kr/pilbong/music.php
+- https://m.blog.naver.com/beat_a/20115580921 (PDF)
