@@ -12,7 +12,7 @@ const Rhythm = () => {
     useEffect(() => {
         const intervalId = setInterval(() => {
             setSatelliteRotation((prevRotation) => prevRotation + 0.003);
-        }, 10);
+        }, 100);
 
         // 이미 등록된 사운드인지 확인
         if (!sound.exists('buk_2')) {
@@ -32,7 +32,7 @@ const Rhythm = () => {
     const handleStageTouchStart = () => {
         console.log("handleStageTouchStart");
         sound.play('buk_2');
-        setSatelliteScale((prevScale) => prevScale * 2);
+        setSatelliteScale((prevScale) => prevScale * 1.2);
     };
 
     const handleStageTouchEnd = () => {
@@ -52,9 +52,9 @@ const Rhythm = () => {
         >
             <Container>
                 <Sprite
-                    image="images/satellite.png"
-                    width={50 * satelliteScale}
-                    height={50 * satelliteScale}
+                    image="images/buk.png"
+                    width={200 * satelliteScale}
+                    height={200 * satelliteScale}
                     x={viewportWidth / 2}
                     y={viewportHeight / 2}
                     anchor={{ x: 0.5, y: 0.5 }}
