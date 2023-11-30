@@ -30,7 +30,7 @@ const Rhythm = () => {
         <Stage width={viewportWidth} height={viewportHeight} options={{ resizeTo: window }}>
             <Container interactive={true} pointerdown={handleTouch} pointerup={handleRelease}>
                 <Sprite
-                    image="../../public/images/satellite.png"
+                    image="images/satellite.png"
                     width={50 * satelliteScale}
                     height={50 * satelliteScale}
                     x={viewportWidth / 2}
